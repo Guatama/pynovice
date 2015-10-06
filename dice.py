@@ -1,5 +1,5 @@
 __author__ = 'Flatline01'
-# The simulator throws a two dice that displays the result of the throw
+# That programm simulates the roll of two dice and display the result (sum of points).
 
 print("With this program you throw two dice!")
 
