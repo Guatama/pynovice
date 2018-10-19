@@ -11,3 +11,5 @@ numDays = deadlineDate - currentDate
 
 print("\nToday is " + currentDate.strftime('%d %B, %Y'))
 print("Before the event " + str(numDays.days) + " days left.")
+
+# TODO: add support "negative" date (how much days went after birth date for example)
