@@ -2,25 +2,28 @@ __author__ = 'Flatline01'
 # The program calculates the number of days from today's date to the date entered by the user
 import datetime
 
-currentDate = datetime.date.today()
+def date2day(date_for_deadline): 
+    deadlineDate = datetime.datetime.strptime(date_for_deadline, "%d/%m/%Y").date()
+    time_between = deadlineDate - datetime.date.today()
+    numDays = time_between.days
+    return numDays
 
-print("Here you can calculate how many\ndays are left until a certain date.")
+if __name__ == '__main__':
+        
+    print("Here you can calculate how many\ndays are left until a certain date.")
 
-deadlineDate = datetime.datetime.strptime(input("\nEnter date of event (DD/MM/YY): "), "%d/%m/%Y").date()
-time_between = deadlineDate - currentDate
-numDays = time_between.days
+    your_date = date2day(input("\nEnter date of event (DD/MM/YY): "))
 
-print("\nToday is " + currentDate.strftime('%d %B, %Y'))
-if numDays > 0:
-    print("Before the event " + str(numDays) + " days left.")
+    print("\nToday is " + datetime.date.today().strftime('%d %B, %Y'))
+    if your_date > 0:
+        print("Before the event " + str(your_date) + " days left.")
 
-elif numDays == 0:
-    print("This event is Today!")
+    elif your_date == 0:
+        print("This event is Today!")
 
-else:
-    numDays *= -1
-    print("After the event, " + str(numDays) + " days have passed.")
-
+    else:
+        your_date *= -1
+        print("After the event, " + str(your_date) + " days have passed.")
 
 # TODO: add support "negative" date (how much days went after birth date for example) DONE
 # TODO: add function for calculation parts and simplify the code
