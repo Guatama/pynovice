@@ -16,7 +16,6 @@ def second_index(text: str, symbol: str) -> [int, None]:
 #         if count == 2:
 #             return num
 
-
 if __name__ == '__main__':  # Testing
     print('Example:')
     print(second_index("sims", "s")) # return 3
