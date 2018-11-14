@@ -1,5 +1,5 @@
 __author__ = 'Flatline01'
-
+__version__ = '1.0'
 testGame = ['#', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']
 newGame = ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
@@ -147,6 +147,7 @@ def start_game(board):
         Main game loop
     """
     print("\n\n-----Welcome to Tic Tac Toe!------")
+    print("ver 1.0.0")
     print("=" * 40)
     
     while True:
