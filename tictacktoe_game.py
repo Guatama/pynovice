@@ -1,5 +1,5 @@
 __author__ = 'Flatline01'
-JupNB = False
+
 testGame = ['#', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']
 newGame = ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
@@ -22,7 +22,7 @@ def board_display(board):
     line_space = spaces + "    |   |    "
     line_horiz = spaces + "—" * 13
 
-    clear_screen(JupNB)
+    clear_screen()
     print(line_space + "\n" + spaces + " " + board[1] + "  | " + board[2] + " | " + board[3] + " ")     # 1 line
     print(line_space + "\n" + line_horiz)
     print(line_space + "\n" + spaces + " " + board[4] + "  | " + board[5] + " | " + board[6] + " ")     # 2 line
@@ -70,6 +70,15 @@ def win_check(board, marker):
            (board[3] == marker and board[5] == marker and board[7] == marker))
 
 
+def draw_check(board, marker_1, marker_2):
+    """
+        Checking - if we have draw situation
+    """
+    if full_board_check(board) and not win_check(board, marker_1) and not win_check(board, marker_2):
+        print("\nThe game is a draw.\n")
+        return True
+    return False
+
 def choose_first():
     """
         Randomly choose, which player will be first
@@ -82,6 +91,23 @@ def choose_first():
         return 'Player 2'
 
 
+def dialog_YN(question):
+    """
+        Func for questions with bool answer. Return TRUE if Yes, and FALSE if No
+    """   
+    list_of_answer = ['y','yes','n','no',]
+    answer = ''
+    while answer not in list_of_answer:
+        answer = input(question).lower()  
+        if answer == list_of_answer[0] or answer == list_of_answer[1]:
+            bool_answer = True
+        elif answer == list_of_answer[2] or answer == list_of_answer[3]:
+            bool_answer = False
+        else:
+            continue
+    return bool_answer
+
+
 def player_input():
     """
         Input function - move of players (markers - X or O, and place in range from 1 to 9)
@@ -89,7 +115,7 @@ def player_input():
     marker = ''
     
     while not (marker == 'X' or marker == 'O'):
-        marker = input('Player 1: Do you want to be X or O?').upper()
+        marker = input('Player 1: Do you want to be X or O?  ').upper()
     
     if marker == 'X':
         return ('X', 'O')
@@ -103,44 +129,61 @@ def player_choice(board):
     """
     position = 0
     while position not in [1, 2, 3, 4, 5, 6, 7, 8, 9] or not space_check(board, position):
-        position = int(input("Choose your next position (1 - 9): "))
-
+        try:
+            position = int(input("Choose your next position (1 - 9): "))
+        except:
+            continue
     return position
 
+def replay():
+    """
+        Replay
+    """
+    return dialog_YN("Do you want to play again? Enter YES or NO -  ")
 
 
 def start_game(board):
     """
         Main game loop
     """
-    game_on = True
-    print("Welcome! Let's play")
-    input()
-    player1_marker, player2_marker = player_input()
-    turn = choose_first()
+    print("\n\n-----Welcome to Tic Tac Toe!------")
+    print("=" * 40)
+    
+    while True:
+           
+        theBoard = [' '] * 10
+        player1_marker, player2_marker = player_input()
+        turn = choose_first()
+        print("\n\n" + turn + " will go first.")
+        # TODO do alter function for replay and all YES and NO questions with question(str) --> str + Y/N and Bool
+        game_on = dialog_YN("Are you ready to play? Enter YES or NO -  ")   
+        while game_on:
+            
+            if turn == 'Player 1':
+                board_display(theBoard)
+                print("Player 1 move.")
+                move = player_choice(theBoard)
+                place_marker(theBoard, player1_marker, move)
+                if win_check(theBoard, player1_marker):
+                    board_display(theBoard)
+                    print("\nCongratulations! Player 1 win!")
+                    break
+                if draw_check(theBoard, player1_marker, player2_marker):
+                    break
+                turn = 'Player 2'
 
-    while game_on:
-        
-        if turn == 'Player 1':
-            board_display(board)
-            print("Player 1 move.")
-            move = player_choice(board)
-            place_marker(board, player1_marker, move)
-            if win_check(board, player1_marker):
-                board_display(board)
-                print("Player 1 win!")
-                break
-            turn = 'Player 2'
-
-        else:
-            board_display(board)
-            print("Player 2 move.")
-            move = player_choice(board)
-            place_marker(board, player2_marker, move)
-            if win_check(board, player2_marker):
-                
-                print("Player 2 win!")
-                break
-            turn = 'Player 1'
-
+            else:
+                board_display(theBoard)
+                print("Player 2 move.")
+                move = player_choice(theBoard)
+                place_marker(theBoard, player2_marker, move)
+                if win_check(theBoard, player2_marker):
+                    board_display(theBoard)
+                    print("\nCongratulations! Player 2 win!")
+                    break
+                if draw_check(theBoard, player1_marker, player2_marker):
+                    break
+                turn = 'Player 1'
+        if not replay():
+            break
 start_game(newGame)
