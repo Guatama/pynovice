@@ -19,6 +19,6 @@ if __name__ == '__main__':  # Testing
     test_days = 30
     test_start = None # or string "10/11/2018"
     test_result = deadline_date(test_days, test_start)
-    print(f"Today is {test_start}. After {test_days} will be that date: {test_result}")
+    print("Today is {}. After {} will be that date: {}".format(test_start, test_days, test_result))
     print(deadline_date(356))
     print(deadline_date(356, "01/01/2018"))
