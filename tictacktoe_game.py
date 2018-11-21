@@ -1,9 +1,6 @@
 __author__ = 'Flatline01'
-<<<<<<< HEAD
-
-=======
 __version__ = '1.0.0'
->>>>>>> 304cc9793436300d75976eccd91f5d48e5da172f
+
 testGame = ['#', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']
 newGame = ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
@@ -151,10 +148,7 @@ def start_game(board):
         Main game loop
     """
     print("\n\n-----Welcome to Tic Tac Toe!------")
-<<<<<<< HEAD
-=======
     print("--------------ver 1.0------------")
->>>>>>> 304cc9793436300d75976eccd91f5d48e5da172f
     print("=" * 40)
     
     while True:
@@ -194,8 +188,5 @@ def start_game(board):
                 turn = 'Player 1'
         if not replay():
             break
-<<<<<<< HEAD
+
 start_game(newGame)
-=======
-start_game(newGame)
->>>>>>> 304cc9793436300d75976eccd91f5d48e5da172f
