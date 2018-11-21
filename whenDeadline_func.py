@@ -22,3 +22,4 @@ if __name__ == '__main__':  # Testing
     print("Today is {}. After {} will be that date: {}".format(test_start, test_days, test_result))
     print(deadline_date(356))
     print(deadline_date(356, "01/01/2018"))
+
