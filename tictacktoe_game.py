@@ -188,5 +188,6 @@ def start_game(board):
                 turn = 'Player 1'
         if not replay():
             break
-
-start_game(newGame)
+            
+if __name__ == '__main__':
+    start_game(newGame)
