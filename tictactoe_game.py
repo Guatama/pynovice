@@ -1,6 +1,8 @@
 __author__ = 'Flatline01'
 __version__ = '1.0.0'
 
+import os, platform
+
 testGame = ['#', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']
 newGame = ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
@@ -11,8 +13,11 @@ def clear_screen(JupyterNotebook=False):
     if JupyterNotebook:
         from IPython.display import clear_output
         clear_output()
+
+    if platform.system() == 'Windows':
+        os.system('cls')
     else:
-        print('\n' * 100)
+        os.system('clear')
 
 
 def board_display(board):
@@ -24,12 +29,14 @@ def board_display(board):
     line_horiz = spaces + "—" * 13
 
     clear_screen()
+    print("\n\n")
     print(line_space + "\n" + spaces + " " + board[1] + "  | " + board[2] + " | " + board[3] + " ")     # 1 line
     print(line_space + "\n" + line_horiz)
     print(line_space + "\n" + spaces + " " + board[4] + "  | " + board[5] + " | " + board[6] + " ")     # 2 line
     print(line_space + "\n" + line_horiz)
     print(line_space + "\n" + spaces + " " + board[7] + "  | " + board[8] + " | " + board[9] + " ")     # 3 line
     print(line_space + "\n" * 5)
+
 
 
 def place_marker(board, marker, position):
@@ -147,6 +154,7 @@ def start_game(board):
     """
         Main game loop
     """
+    clear_screen()
     print("\n\n-----Welcome to Tic Tac Toe!------")
     print("--------------ver 1.0------------")
     print("=" * 40)
