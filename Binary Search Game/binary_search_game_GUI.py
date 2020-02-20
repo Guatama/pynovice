@@ -2,7 +2,7 @@
 The game of guessing the number in the specified range, with the implementation of the binary search algorithm.
 """
 __author__ = 'Flatline01'
-import math
+from math import log
 import PySimpleGUI as sg
 
 # last_guess_number = 1
@@ -27,13 +27,13 @@ window.Close()
 
 # Second window
 effort_number = 1
-efforts = math.log(y_range, 2)
+efforts = log(y_range, 2)
 last_guess_number = x_range + (y_range - x_range) / 2
 
 layout_two = [[sg.Text(f'{round(last_guess_number)}', key='output'), sg.Text('is your number?')],
            [sg.Button('Less'), sg.Button('YES'), sg.Button('More')],
            [sg.Text(f"{effort_number}", key="effort_number"), sg.Text("|"), sg.Text(f"{round(efforts)}")], 
-           [sg.ProgressBar(efforts, orientation='h', size=(20, 20), key='progbar', style=)]
+           [sg.ProgressBar(efforts, orientation='h', size=(20, 20), key='progbar')]
 ]
 
 window2 = sg.Window('Binary Search Game').Layout(layout_two)
