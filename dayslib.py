@@ -50,7 +50,7 @@ if __name__ == '__main__':  # Testing
     print("... Test sequence - DONE\n")
 
     print("Here you can calculate how many\ndays are left until a certain date.")
-    your_date = date2days(input("\nEnter date of event (DD/MM/YY): "))
+    your_date = date2days(input("\nEnter date of event (DD/MM/YYYY): "))
     print("\nToday is {}".format(datetime.date.today().strftime('%d %B, %Y')))
 
     if your_date > 0:
