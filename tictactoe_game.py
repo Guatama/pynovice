@@ -1,8 +1,8 @@
 __author__ = 'Flatline01'
-__version__ = '1.0.0'
-
+__version__ = '1.0.1'
 import os
 import platform
+
 
 testGame = ['#', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']
 newGame = ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
@@ -27,23 +27,16 @@ def board_display(board):
         Displaying board-grid and markers in places in term
     """
     spaces = " " * 10
-    line_space = spaces + "    |   |    "
-    line_horiz = spaces + "—" * 13
+    line_space = spaces + "   |   |   "
+    line_horiz = spaces + "—" * 11
 
     clear_screen()
     print("\n\n")
     print("{}\n{} {} | {} | {} ".format(line_space, spaces, board[1], board[2], board[3]))
     print("{}\n{}".format(line_space, line_horiz))
-    print("{}\n{} {} | {} | {} ".format(line_space, spaces, board[1], board[2], board[3]))
+    print("{}\n{} {} | {} | {} ".format(line_space, spaces, board[4], board[5], board[6]))
     print("{}\n{}".format(line_space, line_horiz))
-    print("{}\n{} {} | {} | {} ".format(line_space, spaces, board[1], board[2], board[3]))
-
-
-    # print(line_space + "\n" + spaces + " " + board[1] + "  | " + board[2] + " | " + board[3] + " ")     # 1 line
-    # print(line_space + "\n" + line_horiz)
-    # print(line_space + "\n" + spaces + " " + board[4] + "  | " + board[5] + " | " + board[6] + " ")     # 2 line
-    # print(line_space + "\n" + line_horiz)
-    # print(line_space + "\n" + spaces + " " + board[7] + "  | " + board[8] + " | " + board[9] + " ")     # 3 line
+    print("{}\n{} {} | {} | {} ".format(line_space, spaces, board[7], board[8], board[9]))
     print(line_space + "\n" * 5)
 
 
