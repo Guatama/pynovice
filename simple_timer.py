@@ -1,31 +1,33 @@
-import datetime
-import time
-import os
+from datetime import datetime
+from time import sleep
+from os import system
+import platform
 
 
-def timer(minute :int):
+def timer(minute: int) -> None:
     counter = 0
     timer_time = minute * 60
     second_point = ""
     while counter <= timer_time:
-        os.system("cls")
-
-        if counter % 2 == 0:
-            second_point = "*"
+        if platform.system() == 'Windows':
+            system('cls')
         else:
-            second_point = ""
+            system('clear')
 
-        now = datetime.datetime.today().time()
-        print("{}:{}:{}{}".format(now.hour, now.minute, now.second, second_point))
-
+        second_point = "*" if counter % 2 else " "
+        now = datetime.today().time()
+        print("{:02}:{:02}:{:02}{}".format(now.hour, now.minute,
+                                           now.second, second_point))
         counter += 1
-        time.sleep(1)
+        sleep(1)
+
+    print("DONE! {} min. pass!".format(minute))
 
 
-def Main():
+def main():
     min_test = input("Minute: ")
     timer(int(min_test))
 
 
 if __name__ == "__main__":
-    Main()
+    main()
